@@ -78,6 +78,14 @@ public class LeaderElectionAgent extends AbstractLeadershipLocalEventDispatcher 
             var currentLeader = findCurrentLeader(500, 30);
             if (null == currentLeader || currentLeader.isBlank()) {
                 log.debug("No leader found");
+                if (lastLeaderId != null) {
+                    lastLeaderId = null;
+                    publishEvent(LeadershipEvent.builder() //
+                            .localId(id) //
+                            .leaderId(null) //
+                            .leaderData(null) //
+                            .build());
+                }
                 return;
             }
 
