@@ -22,12 +22,12 @@ public class LeaderElectionAgent extends AbstractLeadershipLocalEventDispatcher 
 
         @Override
         public void stateChanged(CuratorFramework client, ConnectionState newState) {
-            LeaderElectionAgent.this.stateChanged(client, newState);
+            LeaderElectionAgent.this.stateChanged(newState);
         }
 
         @Override
         public void takeLeadership(CuratorFramework client) throws Exception {
-            LeaderElectionAgent.this.takeLeadership(client);
+            LeaderElectionAgent.this.takeLeadership();
         }
     };
 
@@ -134,11 +134,11 @@ public class LeaderElectionAgent extends AbstractLeadershipLocalEventDispatcher 
         });
     }
 
-    private void stateChanged(CuratorFramework client, ConnectionState newState) {
+    private void stateChanged(ConnectionState newState) {
         log.debug("state changed, is connected: " + newState.isConnected());
     }
 
-    private void takeLeadership(CuratorFramework client) throws Exception {
+    private void takeLeadership() throws Exception {
         client.create().orSetData().withMode(CreateMode.EPHEMERAL).forPath(rootPath + "/" + id, data);
         if (globalEventDispatcher != null) {
             globalEventDispatcher.publishEvent(id);
