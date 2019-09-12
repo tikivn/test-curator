@@ -33,7 +33,7 @@ public class LeaderElectionAgent extends AbstractLeadershipLocalEventDispatcher 
 
     private final AtomicReference<CountDownLatch> lockHolder = new AtomicReference<>(null);
 
-    private @NonNull LeadershipGlobalEventDispatcher globalEventDispatcher;
+    private LeadershipGlobalEventDispatcher globalEventDispatcher;
 
     private @NonNull CuratorFramework client;
 
@@ -139,7 +139,11 @@ public class LeaderElectionAgent extends AbstractLeadershipLocalEventDispatcher 
 
     private void takeLeadership(CuratorFramework client) throws Exception {
         client.create().orSetData().withMode(CreateMode.EPHEMERAL).forPath(rootPath + "/" + id, data);
-        globalEventDispatcher.publishEvent(id);
+        if (globalEventDispatcher != null) {
+            globalEventDispatcher.publishEvent(id);
+        } else {
+            checkLeader(id);
+        }
         keepLeadership();
     }
 }
