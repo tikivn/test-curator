@@ -15,10 +15,10 @@ import com.hazelcast.core.Hazelcast;
 import io.gridgo.bean.BObject;
 import io.gridgo.utils.UuidUtils;
 import lombok.extern.slf4j.Slf4j;
-import vn.tiki.test.curator.event.leadership.HzLeadershipGlobalEventDispatcher;
-import vn.tiki.test.curator.event.leadership.LeaderElectionAgent;
-import vn.tiki.test.curator.event.leadership.LeadershipEvent;
-import vn.tiki.test.curator.event.leadership.LeadershipGlobalEventDispatcher;
+import vn.tiki.test.curator.leadership.impl.HzLeadershipGlobalEventDispatcher;
+import vn.tiki.test.curator.leadership.impl.LeaderElectionAgent;
+import vn.tiki.test.curator.leadership.impl.LeadershipEvent;
+import vn.tiki.test.curator.leadership.impl.LeadershipGlobalEventDispatcher;
 
 @Slf4j
 public class TestCurator {

@@ -1,4 +1,4 @@
-package vn.tiki.test.curator.event.leadership;
+package vn.tiki.test.curator.leadership.impl;
 
 import static io.gridgo.utils.ThreadUtils.sleepSilence;
 

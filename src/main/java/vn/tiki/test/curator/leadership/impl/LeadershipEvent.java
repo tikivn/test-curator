@@ -1,4 +1,4 @@
-package vn.tiki.test.curator.event.leadership;
+package vn.tiki.test.curator.leadership.impl;
 
 import lombok.Builder;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package vn.tiki.test.curator.event.leadership;
+package vn.tiki.test.curator.leadership.impl;
 
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.ITopic;
@@ -6,7 +6,7 @@ import com.hazelcast.core.Message;
 
 import lombok.Builder;
 import lombok.NonNull;
-import vn.tiki.test.curator.event.AbstractEventDispatcher;
+import vn.tiki.test.curator.leadership.AbstractEventDispatcher;
 
 public class HzLeadershipGlobalEventDispatcher extends AbstractEventDispatcher<String>
         implements LeadershipGlobalEventDispatcher {

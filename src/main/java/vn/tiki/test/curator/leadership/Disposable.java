@@ -1,4 +1,4 @@
-package vn.tiki.test.curator.event;
+package vn.tiki.test.curator.leadership;
 
 @FunctionalInterface
 public interface Disposable {
