@@ -12,7 +12,6 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
 import com.hazelcast.config.Config;
 import com.hazelcast.core.Hazelcast;
 
-import io.gridgo.bean.BElement;
 import io.gridgo.bean.BObject;
 import io.gridgo.utils.UuidUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -86,7 +85,11 @@ public class TestCurator {
     }
 
     private void onLeadershipEvent(LeadershipEvent event) {
-        log.debug("leader: {}", BElement.ofBytes(event.getLeaderData()).toString());
+        if (event.getLocalId().equals(event.getLeaderId())) {
+            log.debug("I'm the leader");
+        } else {
+            log.debug("The leader: {}", event.getLeaderId());
+        }
     }
 
     private void start() {
