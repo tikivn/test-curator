@@ -67,7 +67,8 @@ public class LeaderElectionAgent extends AbstractLeadershipLocalEventDispatcher 
         selector.autoRequeue();
         selector.start();
 
-        globalEventDispatcher.subscribeEvent(this::checkLeader);
+        if (globalEventDispatcher != null)
+            globalEventDispatcher.subscribeEvent(this::checkLeader);
 
         checkLeader(null);
     }
