@@ -72,14 +72,14 @@ public class TestCurator {
     }
 
     private TestCurator(CuratorFramework client, String rootPath, String id,
-            LeadershipGlobalEventDispatcher eventDispatcher) {
+            LeadershipGlobalEventDispatcher globalEventDispatcher) {
         var data = BObject.ofSequence("key", "this is value for node " + id).toBytes();
         this.agent = LeaderElectionAgent.builder() //
                 .client(client) //
                 .rootPath(rootPath) //
                 .id(id)//
                 .data(data) //
-                .eventDispatcher(eventDispatcher) //
+                .globalEventDispatcher(globalEventDispatcher) //
                 .build();
 
         this.agent.subscribeEvent(this::onLeadershipEvent);

@@ -49,12 +49,12 @@ public class LeaderElectionAgent extends AbstractLeadershipLocalEventDispatcher 
 
     @Builder
     private LeaderElectionAgent(CuratorFramework client, String rootPath, String id, byte[] data,
-            LeadershipGlobalEventDispatcher eventDispatcher) {
+            LeadershipGlobalEventDispatcher globalEventDispatcher) {
         this.client = client;
         this.rootPath = rootPath;
         this.id = id;
         this.data = data;
-        this.globalEventDispatcher = eventDispatcher;
+        this.globalEventDispatcher = globalEventDispatcher;
     }
 
     public void stop() {
