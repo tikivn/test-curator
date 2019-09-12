@@ -121,7 +121,7 @@ public class LeaderElectionAgent extends AbstractLeadershipLocalEventDispatcher 
             try {
                 lockHolder.get().await();
             } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+                // do nothing
             }
         }
     }
